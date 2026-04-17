@@ -1,8 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Propiedad, formatPrecio, TIPO_LABELS } from "../data/propiedades";
 import ImageCarousel from "../components/ImageCarousel";
+
+// SSR desactivado: Leaflet usa APIs del browser (window, document)
+const MapaPropiedad = dynamic(() => import("@/components/MapaPropiedad"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full items-center justify-center rounded-2xl bg-gray-100">
+      <p className="text-sm text-gray-400">Cargando mapa…</p>
+    </div>
+  ),
+});
 
 // TODO: Reemplazar con el número de WhatsApp de la empresa
 const WA_NUMBER = "5491100000000";
@@ -166,6 +177,21 @@ export default function PropertyDetailClient({ p }: { p: Propiedad }) {
                     </li>
                   ))}
                 </ul>
+              </section>
+            )}
+
+            {/* Mapa de ubicación */}
+            {p.lat != null && p.lng != null && (
+              <section className="mt-6">
+                <h2 className="mb-3 text-lg font-extrabold text-gray-900">
+                  📍 Ubicación en el mapa
+                </h2>
+                <div className="h-64 w-full overflow-hidden rounded-2xl border border-gray-100 shadow-sm sm:h-80">
+                  <MapaPropiedad lat={p.lat} lng={p.lng} titulo={p.titulo} />
+                </div>
+                <p className="mt-2 text-xs text-gray-400">
+                  {p.ubicacion}
+                </p>
               </section>
             )}
 

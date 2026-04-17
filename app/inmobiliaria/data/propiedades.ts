@@ -25,6 +25,8 @@ export type Propiedad = {
   requisitos: string[];
   images: string[];
   destacada: boolean;
+  lat?: number | null;
+  lng?: number | null;
 };
 
 const img = (id: string) => `https://images.unsplash.com/photo-${id}?w=800&q=80`;

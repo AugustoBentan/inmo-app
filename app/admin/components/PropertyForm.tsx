@@ -1,12 +1,25 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import dynamic from "next/dynamic";
 import {
   Propiedad,
   TipoInmueble,
   TIPO_LABELS,
 } from "../../inmobiliaria/data/propiedades";
 import { createBrowserClient } from "@/lib/supabase/client";
+
+const MapaSelectorUbicacion = dynamic(
+  () => import("@/components/MapaSelectorUbicacion"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-72 items-center justify-center rounded-2xl bg-gray-100">
+        <p className="text-sm text-gray-400">Cargando mapa…</p>
+      </div>
+    ),
+  }
+);
 
 const STORAGE_BUCKET = "propiedades";
 
@@ -32,6 +45,8 @@ type FormData = {
   servicios: string[];
   requisitos: string[];
   destacada: boolean;
+  lat: number | null;
+  lng: number | null;
 };
 
 const FORM_INICIAL: FormData = {
@@ -41,6 +56,7 @@ const FORM_INICIAL: FormData = {
   superficieCubierta: "", superficieTotal: "", expensas: "",
   descripcion: "", caracteristicas: [], servicios: [], requisitos: [],
   destacada: false,
+  lat: null, lng: null,
 };
 
 const SERVICIOS_COMUNES = [
@@ -279,6 +295,8 @@ export default function PropertyForm({
         servicios: [...propiedad.servicios],
         requisitos: [...propiedad.requisitos],
         destacada: propiedad.destacada,
+        lat: propiedad.lat ?? null,
+        lng: propiedad.lng ?? null,
       });
       setImagePreviews([...propiedad.images]);
       setPendingFiles(new Map());
@@ -431,6 +449,8 @@ export default function PropertyForm({
       images: finalImages.length > 0
         ? finalImages
         : ["https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80"],
+      lat: form.lat,
+      lng: form.lng,
     };
 
     onSave(saved);
@@ -547,7 +567,21 @@ export default function PropertyForm({
           </div>
         </Section>
 
-        {/* 4. Medidas */}
+        {/* 4. Mapa */}
+        <Section title="🗺️ Ubicación en el mapa">
+          <p className="mb-3 text-xs text-gray-500">
+            Hacé clic en el mapa para marcar la ubicación exacta, buscá una dirección, o usá el botón{" "}
+            <strong>Usar dirección ↑</strong> para geocodificar la dirección que cargaste arriba.
+          </p>
+          <MapaSelectorUbicacion
+            lat={form.lat}
+            lng={form.lng}
+            direccionInicial={form.ubicacion || undefined}
+            onChange={(lat, lng) => set({ lat, lng })}
+          />
+        </Section>
+
+        {/* 5. Medidas */}
         <Section title="📐 Medidas y ambientes">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {[

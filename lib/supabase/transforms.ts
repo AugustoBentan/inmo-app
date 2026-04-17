@@ -24,6 +24,8 @@ export type PropiedadRow = {
   requisitos: string[];
   images: string[];
   destacada: boolean;
+  lat: number | null;
+  lng: number | null;
   created_at: string;
   updated_at: string;
 };
@@ -53,6 +55,8 @@ export function rowToPropiedad(row: PropiedadRow): Propiedad {
     requisitos: row.requisitos ?? [],
     images: row.images ?? [],
     destacada: row.destacada,
+    lat: row.lat ?? null,
+    lng: row.lng ?? null,
   };
 }
 
@@ -82,5 +86,7 @@ export function propiedadToRow(
     requisitos: p.requisitos,
     images: p.images,
     destacada: p.destacada,
+    lat: p.lat ?? null,
+    lng: p.lng ?? null,
   };
 }
