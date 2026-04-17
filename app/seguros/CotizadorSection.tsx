@@ -199,7 +199,7 @@ function CotizacionModal({
         {/* Header con gradiente */}
         <div className={`bg-gradient-to-r ${seguro.color.modalHeader} px-6 py-5 text-white`}>
           <div className="flex items-center gap-3">
-            <span className="text-3xl">{seguro.emoji}</span>
+            <span className="text-xl">{seguro.emoji}</span>
             <div>
               <p className="text-xs font-medium uppercase tracking-widest opacity-80">
                 Cotización

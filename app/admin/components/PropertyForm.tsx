@@ -168,7 +168,7 @@ function ImageUpload({
           : "border-gray-200 bg-gray-50 hover:border-blue-300 hover:bg-blue-50/50"
         }`}
       >
-        <span className="text-3xl">📸</span>
+        <span className="text-xl">📸</span>
         <p className="text-sm font-semibold text-gray-600">
           Arrastrá imágenes o <span className="text-blue-600 underline">hacé clic para subir</span>
         </p>

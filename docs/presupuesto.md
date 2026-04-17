@@ -137,7 +137,7 @@ Se desarrollará una plataforma web completa para una empresa **Inmobiliaria y P
 |------|---------|
 | Validez de la propuesta | 30 días desde la fecha de emisión |
 | Forma de pago | 50% al inicio — 50% a la entrega |
-| Tiempo de entrega | 2/3 semanas |
+| Tiempo de entrega | Beta 2 semanas - Proyecto terminado en 3 semanas |
 | Revisiones incluidas | Hasta 3 rondas de ajustes sin costo adicional |
 | Soporte post-entrega | 30 días de soporte gratuito ante errores |
 

@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
+/* ── Variables base ──────────────────────────────────────────────────────── */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1e293b;        /* slate-800 — gris oscuro sofisticado        */
+  --foreground-soft: #64748b;   /* slate-500 — textos secundarios             */
+  --foreground-muted: #94a3b8;  /* slate-400 — textos terciarios / hints      */
 }
 
+/* ── Tema Tailwind v4 ────────────────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background:     var(--background);
+  --color-foreground:     var(--foreground);
+
+  /* DM Sans como fuente base del sistema */
+  --font-sans:    var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Playfair Display como fuente de display/títulos (clase: font-display) */
+  --font-display: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
+
+  --font-mono:    ui-monospace, "Cascadia Code", "Fira Code", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Reset base ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+/* ── Body ────────────────────────────────────────────────────────────────── */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Títulos: Playfair Display ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), ui-serif, Georgia, serif;
+  color: var(--foreground);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ── Textos secundarios ──────────────────────────────────────────────────── */
+p {
+  color: var(--foreground);
+}
+
+/* ── Selección de texto con color de marca ──────────────────────────────── */
+::selection {
+  background-color: #f59e0b22;
+  color: var(--foreground);
+}
+
+/* ── Emojis decorativos: levemente más pequeños para no competir con la tipografía ── */
+span.emoji {
+  font-size: 0.85em;
+  line-height: 1;
+  vertical-align: -0.05em;
+  display: inline-block;
 }

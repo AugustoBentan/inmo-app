@@ -24,7 +24,7 @@ function ConfirmDialog({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
       <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-100">
-          <span className="text-2xl">🗑️</span>
+          <span className="text-lg">🗑️</span>
         </div>
         <h3 className="mb-2 text-center text-lg font-extrabold text-gray-900">
           ¿Eliminar propiedad?

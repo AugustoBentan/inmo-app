@@ -90,35 +90,35 @@ export default function PropertyDetailClient({ p }: { p: Propiedad }) {
             <div className="mt-5 flex flex-wrap gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
               {p.ambientes !== null && (
                 <div className="flex flex-col items-center gap-0.5">
-                  <span className="text-2xl">🏠</span>
+                  <span className="text-lg">🏠</span>
                   <span className="text-lg font-extrabold text-gray-900">{p.ambientes}</span>
                   <span className="text-xs text-gray-500">Ambientes</span>
                 </div>
               )}
               {p.dormitorios !== null && p.dormitorios > 0 && (
                 <div className="flex flex-col items-center gap-0.5">
-                  <span className="text-2xl">🛏️</span>
+                  <span className="text-lg">🛏️</span>
                   <span className="text-lg font-extrabold text-gray-900">{p.dormitorios}</span>
                   <span className="text-xs text-gray-500">Dormitorios</span>
                 </div>
               )}
               {p.baños !== null && (
                 <div className="flex flex-col items-center gap-0.5">
-                  <span className="text-2xl">🚿</span>
+                  <span className="text-lg">🚿</span>
                   <span className="text-lg font-extrabold text-gray-900">{p.baños}</span>
                   <span className="text-xs text-gray-500">Baños</span>
                 </div>
               )}
               {p.superficieCubierta !== null && (
                 <div className="flex flex-col items-center gap-0.5">
-                  <span className="text-2xl">📐</span>
+                  <span className="text-lg">📐</span>
                   <span className="text-lg font-extrabold text-gray-900">{p.superficieCubierta}</span>
                   <span className="text-xs text-gray-500">m² cubiertos</span>
                 </div>
               )}
               {p.superficieTotal !== null && (
                 <div className="flex flex-col items-center gap-0.5">
-                  <span className="text-2xl">🗺️</span>
+                  <span className="text-lg">🗺️</span>
                   <span className="text-lg font-extrabold text-gray-900">{p.superficieTotal}</span>
                   <span className="text-xs text-gray-500">m² totales</span>
                 </div>
